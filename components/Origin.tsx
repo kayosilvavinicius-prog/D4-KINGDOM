@@ -1,9 +1,12 @@
 import React from 'react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 const Origin: React.FC = () => {
+  const { ref, isVisible } = useScrollAnimation();
+  
   return (
-    <section className="py-24 bg-slate-900 text-white">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+    <section ref={ref} className="py-24 bg-slate-900 text-white overflow-hidden">
+      <div className={`max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div>
           <div className="inline-block px-4 py-1.5 bg-slate-800 rounded-full text-xs font-semibold tracking-wider uppercase text-slate-300 mb-6">
             A Origem

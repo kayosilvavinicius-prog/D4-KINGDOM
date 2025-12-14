@@ -14,7 +14,7 @@ const Comparison: React.FC = () => {
 
   return (
     <section ref={ref} className="py-24 bg-slate-50 overflow-hidden">
-      <div className={`max-w-5xl mx-auto px-6 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      <div className={`max-w-5xl mx-auto px-6 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
           Por que o D4 Seller é superior?
         </h2>

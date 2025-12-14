@@ -24,7 +24,7 @@ const Solution: React.FC = () => {
 
   return (
     <section ref={ref} className="py-24 bg-white overflow-hidden">
-      <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 delay-100 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 delay-100 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         
         {/* Definition */}
         <div className="max-w-3xl mx-auto text-center mb-20">

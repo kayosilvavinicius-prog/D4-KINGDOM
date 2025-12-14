@@ -29,7 +29,7 @@ const Problem: React.FC = () => {
 
   return (
     <section ref={ref} className="py-24 bg-slate-50 overflow-hidden">
-      <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
+      <div className={`max-w-7xl mx-auto px-6 transition-all duration-1000 ease-out transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">O WhatsApp virou o principal canal de vendas</h2>
           <p className="text-lg text-slate-600">
