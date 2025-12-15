@@ -3,13 +3,11 @@ import { User, Phone, Mail, Lock } from 'lucide-react';
 import Button from './Button';
 import { CTA_LINK } from '../constants';
 
-// Estendendo a interface Window para evitar erros de TypeScript
+// Definição segura dos tipos globais para analytics
 declare global {
   interface Window {
+    dataLayer?: any[];
     fbq?: any;
-    gtag?: any;
-    ttq?: any;
-    dataLayer?: any[]; // Adicionado suporte ao Data Layer do GTM
   }
 }
 
@@ -33,7 +31,6 @@ const LeadForm: React.FC = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Estrutura do objeto para salvar no Banco de Dados
     const leadData = {
       ...formData,
       submitted_at: new Date().toISOString(),
@@ -43,44 +40,46 @@ const LeadForm: React.FC = () => {
 
     try {
       // ============================================================
-      // 1. REGISTRO DE CONVERSÃO (GTM / PIXELS)
+      // 1. DISPARO DE EVENTOS (GTM & PIXELS)
       // ============================================================
       
-      // Google Tag Manager (Data Layer)
-      // Isso permite que você configure Tags no GTM que disparam quando o evento 'generate_lead' ocorre
-      if (window.dataLayer) {
-        window.dataLayer.push({
-          event: 'generate_lead',
-          formLocation: 'hero_section',
-          userEmail: formData.email
-        });
-      }
+      // Google Tag Manager (Push seguro)
+      // Verifica se o dataLayer existe antes de tentar usar
+      const dataLayer = window.dataLayer || [];
+      dataLayer.push({
+        event: 'generate_lead',
+        category: 'Form',
+        action: 'Submit',
+        label: 'Hero Section Lead',
+        userEmail: formData.email
+      });
 
-      // Facebook / Meta Ads (Fallback direto)
+      // Facebook Pixel (Verificação de segurança)
       if (typeof window.fbq === 'function') {
         window.fbq('track', 'Lead', {
           content_name: 'Cadastro Trial D4 Seller',
           content_category: 'Sign Up'
         });
       }
-      
-      console.log('🎯 Evento de conversão disparado (GTM/Pixels)');
+
+      console.log('✅ Eventos de conversão disparados');
 
       // ============================================================
-      // 2. INTEGRAÇÃO COM BANCO DE DADOS / CRM
+      // 2. INTEGRAÇÃO (Backend/CRM)
       // ============================================================
       
-      console.log('💾 Registrando no Banco de Dados:', leadData);
+      console.log('💾 Simulando envio para Banco de Dados...', leadData);
+      
+      // Simula tempo de processamento
+      await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Simula delay de rede (1.5 segundos) para feedback visual
-      await new Promise(resolve => setTimeout(resolve, 1500));
-
-      // Redirecionamento após "salvar"
+      // Redireciona para o link de destino
       window.open(CTA_LINK, '_blank');
       
     } catch (error) {
-      console.error('Erro ao registrar lead:', error);
-      alert('Houve um erro ao processar. Tente novamente.');
+      console.error('Erro no processamento:', error);
+      // Mesmo com erro no tracking, tentamos redirecionar o usuário
+      window.open(CTA_LINK, '_blank');
     } finally {
       setLoading(false);
     }
