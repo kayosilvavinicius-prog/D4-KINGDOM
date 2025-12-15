@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { CTA_LINK, BRAND_NAME } from '../constants';
+import { BRAND_NAME } from '../constants';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -12,6 +12,14 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToCapture = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('capture-form');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -22,7 +30,8 @@ const Navbar: React.FC = () => {
         </div>
         <div>
           <a 
-            href={CTA_LINK} 
+            href="#capture-form"
+            onClick={scrollToCapture}
             className="text-sm font-semibold text-slate-900 border border-slate-200 px-5 py-2.5 rounded hover:bg-slate-50 transition-colors"
           >
             Acessar Plataforma

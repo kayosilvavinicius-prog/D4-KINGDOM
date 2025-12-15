@@ -17,7 +17,7 @@ const FAQ: React.FC = () => {
       answer: "O D4 Seller foi treinado em vendas consultivas. Se o seu produto ou serviço exige conversa, explicação e quebra de objeções para ser vendido, ele funciona para você."
     },
     {
-      question: "E se eu não gostar durante os 7 dias?",
+      question: "E se eu não gostar durante o teste?",
       answer: "Simplesmente paramos o uso. Não há multa, não há taxa de cancelamento e você não fica preso a nenhum contrato."
     },
     {

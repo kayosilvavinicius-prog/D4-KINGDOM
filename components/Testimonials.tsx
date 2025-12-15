@@ -9,20 +9,17 @@ const Testimonials: React.FC = () => {
     {
       name: "Ricardo Mendes",
       role: "Diretor Comercial, Imobiliária Viver",
-      content: "Antes do D4 Seller, perdíamos leads nos finais de semana e fora do horário comercial. Agora, acordamos na segunda-feira com visitas já agendadas no CRM. A qualificação é impressionante.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      content: "Antes do D4 Seller, perdíamos leads nos finais de semana e fora do horário comercial. Agora, acordamos na segunda-feira com visitas já agendadas no CRM. A qualificação é impressionante."
     },
     {
       name: "Dra. Ana Paula",
       role: "Gestora, Clínica Sorriso Premium",
-      content: "A IA conversa tão bem que os pacientes agradecem a 'atendente' pela simpatia. Reduzimos nosso no-show em 60% apenas confirmando e reagendando automaticamente.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      content: "A IA conversa tão bem que os pacientes agradecem a 'atendente' pela simpatia. Reduzimos nosso no-show em 60% apenas confirmando e reagendando automaticamente."
     },
     {
       name: "Felipe Torres",
       role: "CEO, Torres Seguros",
-      content: "A implementação foi simples e o resultado imediato. O script de SPIN Selling funciona muito bem para filtrar curiosos. Minha equipe só fala com quem realmente quer comprar.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+      content: "A implementação foi simples e o resultado imediato. O script de SPIN Selling funciona muito bem para filtrar curiosos. Minha equipe só fala com quem realmente quer comprar."
     }
   ];
 
@@ -40,7 +37,7 @@ const Testimonials: React.FC = () => {
 
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((item, idx) => (
-            <div key={idx} className="bg-slate-50 p-8 rounded-2xl relative group hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100">
+            <div key={idx} className="bg-slate-50 p-8 rounded-2xl relative group hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100 flex flex-col h-full">
               <Quote className="absolute top-6 right-6 w-8 h-8 text-slate-200 group-hover:text-indigo-100 transition-colors" />
               
               <div className="flex gap-1 mb-6">
@@ -49,20 +46,13 @@ const Testimonials: React.FC = () => {
                 ))}
               </div>
 
-              <p className="text-slate-700 mb-8 leading-relaxed relative z-10">
+              <p className="text-slate-700 mb-8 leading-relaxed relative z-10 flex-grow">
                 "{item.content}"
               </p>
 
-              <div className="flex items-center gap-4">
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="w-12 h-12 rounded-full object-cover border-2 border-white shadow-sm"
-                />
-                <div>
-                  <h4 className="font-bold text-slate-900 text-sm">{item.name}</h4>
-                  <p className="text-slate-500 text-xs">{item.role}</p>
-                </div>
+              <div className="border-t border-slate-200 pt-4">
+                <h4 className="font-bold text-slate-900 text-sm">{item.name}</h4>
+                <p className="text-slate-500 text-xs">{item.role}</p>
               </div>
             </div>
           ))}
